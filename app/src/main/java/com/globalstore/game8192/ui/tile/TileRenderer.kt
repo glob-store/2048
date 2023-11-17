@@ -168,25 +168,24 @@ object TileRendererInstance : TileRenderer {
 
     private fun Int.toBackgroundColor() =
         when {
-            this == 2 -> Color(0xffe9d922)
-            this == 4 -> Color(0xFF4CAF50)
-            this == 8 -> Color(0xffe51e1b)
-            this == 16 -> Color(0xff1a9dc9)
-            /////////////////////////////////////////
-            this == 32 -> Color(0xfff67c5f)
-            this == 64 -> Color(0xfff65e3b)
-            this == 128 -> Color(0xffedcf72)
-            this == 256 -> Color(0xffedcc61)
-            this == 512 -> Color(0xffedc850)
-            this == 1024 -> Color(0xffedc53f)
-            this == 2048 -> Color(0xffedc22e)
-            this == 4096 ->  Color(0xffedc22e)
-            this == 8192 ->  Color(0xffedc22e)
+            this == 2 -> Color(0xFFDCEDC8)
+            this == 4 -> Color(0xFFFFCC80)
+            this == 8 -> Color(0xff80CBC4)
+            this == 16 -> Color(0xffFFD54F)
+            this == 32 -> Color(0xffEEEEEE)
+            this == 64 -> Color(0xffBA68C8)
+            this == 128 -> Color(0xff2E7D32)
+            this == 256 -> Color(0xffF9A825)
+            this == 512 -> Color(0xffD84315)
+            this == 1024 -> Color(0xff424242)
+            this == 2048 -> Color(0xff4527A0)
+            this == 4096 -> Color(0xff00838F)
+            this == 8192 -> Color(0xff212121)
             else -> Color(0xff3c3a32)
         }
 
     private fun Int.toTextColor() =
-        if (this < 4) Color(0xff776e65) else Color(0xfff8f6f2)
+        if (this < 64) Color(0xff776e65) else Color(0xfff8f6f2)
 
     private fun Int.toFontSize() =
         when {

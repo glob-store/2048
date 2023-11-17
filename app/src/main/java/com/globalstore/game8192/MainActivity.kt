@@ -10,16 +10,19 @@ import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.globalstore.game8192.appodeal.AppodealUtils.loadBanner
-import com.globalstore.game8192.appodeal.AppodealUtils.loadRewardedVideo
+import com.appodeal.ads.Appodeal
+import com.globalstore.game8192.appodeal.AppodealUtils
 import com.globalstore.game8192.appodeal.REPEAT_TIME_MILLIS
 import com.globalstore.game8192.appodeal.timer
 import com.globalstore.game8192.ui.game.GameScreen
 import com.globalstore.game8192.ui.theme.Compose2048Theme
 
 class MainActivity : ComponentActivity() {
+
+    private val appodealUtils = AppodealUtils()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        appodealUtils.setActivity(this)
         setContent {
             Compose2048Theme {
                 // A surface container using the 'background' color from the theme
@@ -37,10 +40,10 @@ class MainActivity : ComponentActivity() {
             }
         }
         // loadBanner
-        loadBanner(this)
+        appodealUtils.show(Appodeal.BANNER)
         // loadInterstitial
-        REPEAT_TIME_MILLIS.timer() {
-            loadRewardedVideo(this)
+        REPEAT_TIME_MILLIS.timer {
+            appodealUtils.show(Appodeal.REWARDED_VIDEO)
         }
     }
 }

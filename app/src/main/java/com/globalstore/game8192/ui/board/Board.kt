@@ -14,6 +14,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -25,9 +26,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
+import com.appodeal.ads.Appodeal
 import com.globalstore.game8192.MainActivity
 import com.globalstore.game8192.R
-import com.globalstore.game8192.appodeal.AppodealUtils.loadRewardedVideo
+import com.globalstore.game8192.appodeal.AppodealUtils
 import com.globalstore.game8192.resolve
 import com.globalstore.game8192.ui.board.Layer.Companion.toZIndex
 import com.globalstore.game8192.ui.theme.Compose2048Theme
@@ -43,6 +45,12 @@ fun Board(
     content: @Composable BoardScope.() -> Unit
 ) {
     val mainActivity = LocalContext.current as MainActivity
+    val appodealUtils by remember {
+        val appodealUtils = AppodealUtils()
+        appodealUtils.setActivity(mainActivity)
+        mutableStateOf(appodealUtils)
+    }
+
     Box(
         modifier = modifier
             .aspectRatio(1f)
@@ -66,7 +74,7 @@ fun Board(
                 backgroundColor = won.toPopupBackgroundColor(),
                 onTryAgainClicked = onTryAgainClicked
             )
-            loadRewardedVideo(mainActivity)
+            appodealUtils.show(Appodeal.REWARDED_VIDEO)
         }
     }
 }
