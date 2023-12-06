@@ -106,8 +106,6 @@ class AppodealUtils {
 
     private fun initBanner() {
         activity?.let {
-            Appodeal.setTesting(BuildConfig.DEBUG)
-            Appodeal.setLogLevel(Log.LogLevel.debug)
             Appodeal.initialize(
                 it,
                 BuildConfig.AppKey,
