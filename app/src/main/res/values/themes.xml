@@ -2,6 +2,6 @@
 <resources>
 
     <style name="Theme.Compose2048" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:statusBarColor">@color/purple_700</item>
+        <item name="android:statusBarColor">#e6dbc9</item>
     </style>
 </resources>
